@@ -1,0 +1,180 @@
+					% |-----------------------------------------------------------------------------------------------|%
+					% |                                         						     Shevon Kuan 课程笔记基本模板                                  				          |%
+					% |                                         						                  版本号:3.15b                                                                    			  |%
+					% |                                         						        页面配置:A4 paper侧栏设计                                         						  |%
+					% |-----------------------------------------------------------------------------------------------|%
+\ProvidesPackage{shevonNotebook}
+\usepackage{babel}
+\usepackage{ctex}
+\usepackage[dvipsnames, svgnames, x11names]{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}%数学符号宏包
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{fontspec}
+\usepackage{ntheorem}
+\usepackage{nomencl}
+\usepackage{nicematrix}
+\usepackage{multicol}
+\usepackage{indentfirst}%首行缩进
+	\setlength{\parindent}{2em}
+\usepackage[bookmarks=true,colorlinks,linkcolor=black]{hyperref}
+\usepackage{CJKfntef}
+\usepackage{amsmath,bm}%重要宏包,粗斜体\bm
+\usepackage{makeidx}%重要宏包，用于添加索引
+\usepackage{pgf,tikz,pgfplots}%一般绘图宏包
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{tikz-3dplot}%3d绘图宏包
+\usepackage{tcolorbox}%box宏包
+\usepackage{subfig}
+\usepackage{autobreak}
+\usepackage{enumerate}
+\usepackage{wasysym}
+\usepackage{textcomp}
+\usepackage{marginnote}
+\usepackage{ulem}%下划线宏包用法和样式如下：
+%\uuline{双下划线}
+%\uwave{波浪线}
+%\sout{中间删除线}
+%\xout{斜删除线}
+%\dashuline{虚线}
+%\dotuline{加点}
+\usepackage{titletoc}%目录页的宏包
+\usepackage[center]{titlesec}%改变章节或标题的样式的宏包
+\makenomenclature
+%\titleformat{command}[shape]{format}{label}{sep}{before}[after]
+
+%1.command 是要重新定义的各种标题命令,比如 \part，\chapter，\section，\subsection，\subsubsection，\paragraph，\subparagraph等；
+%2.shape 是用来设定段落形状的,可选的参数有 hang 、 block 、 display 等,详见 titlesec 文档,位于：TEXLIVE/VERSION/texmf-dist/doc/latex/titlesec
+%3.format 用于定义标题外观,比如使标题居中、字体加粗等；
+%4.label 用于定义定义标题的标签,就是标题内容前面的标号；
+%5.sep 定义标题的标签与标题内容之间的间隔距离。
+%6.before 用于在标题内容前再加些内容；
+%7.after 用于在标题内容后再加些内容。
+
+\usetikzlibrary{shapes,arrows}
+\makeindex%添加索引
+%缺省页面
+\geometry{inner=2cm,outer=2cm,bottom=1.5cm,top=2cm,twoside}
+%\geometry{showframe,showcrop}%此句用于显示排版文本框
+%字体设置-------------------------------
+\setCJKmainfont[BoldFont={SourceHanSansHC-Medium}]{SourceHanSerifSC-Regular}
+\setCJKfamilyfont{song}{SourceHanSerifSC-Regular}
+\setCJKfamilyfont{hei}{SourceHanSansHC-Regular}
+\setCJKfamilyfont{heiti}{SourceHanSansHC-Medium}
+\setCJKfamilyfont{heilight}{SourceHanSansHC-Light}
+\setCJKfamilyfont{title}{SourceHanSansHC-Regular}
+\setCJKfamilyfont{songbold}{TsukuBRdGothicStd-Regular}
+\theorembodyfont{\CJKfamily{song}}
+%\setmainfont{Times New Roman}
+%颜色设置-——————————
+\definecolor{f8766d}{HTML}{EA7500}
+\definecolor{1a9850}{HTML}{0097e6}
+\definecolor{ffa725}{HTML}{1289A7}
+\definecolor{2a7ae2}{HTML}{7158e2}
+\definecolor{6a3d9a}{HTML}{ED4C67}
+\definecolor{53a9ab}{HTML}{007500}
+\definecolor{titlepurple}{HTML}{5758BB}
+\definecolor{titlepurpleb}{HTML}{833471}
+\definecolor{titlepurplec}{HTML}{006266}
+\definecolor{md}{HTML}{EA2027}
+\definecolor{background}{HTML}{f5f5ed}
+%geogebra颜色
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
+%定理定义环境设置--------------------
+
+%\newtcbox{\mybox}[1][]{on line,
+%	arc=0pt,outer arc=0pt,colback=#1!10!white,colframe=#1,
+%	boxsep=0pt,left=3pt,right=3pt,top=2pt,bottom=2pt,
+%	boxrule=0pt,leftrule=1.5pt}
+
+\newcommand{\mybox}[2][]{
+		\begin{tcolorbox}[on line,
+		arc=0pt,outer arc=0pt,colback=#1!7!white,colframe=#1,
+		boxsep=0pt,left=3pt,right=3pt,top=5pt,bottom=5pt,
+		boxrule=0pt,leftrule=1.5pt,halign=flush center]#2
+		\end{tcolorbox}}
+
+\newcommand{\myboxp}[2][]{
+		\begin{tcolorbox}[on line,
+		arc=0pt,outer arc=0pt,colback=white,colframe=#1,
+		boxsep=0pt,left=3pt,right=3pt,top=5pt,bottom=5pt,
+		boxrule=0pt,leftrule=1.5pt]#2
+		\end{tcolorbox}}
+\newcounter{A}[section]
+\newcounter{B}[section]
+\newcounter{C}[section]
+\newcounter{D}[section]
+\newcounter{E}[section]
+\newcounter{F}[section]
+
+\newcommand{\con}[1]{{\bfseries\refstepcounter{#1}\thesection.\arabic{#1}}}
+
+%\theoremindent0.2cm
+%\theoremheaderfont{\CJKfamily{songbold}}
+%\theoremstyle{break}
+
+%\newtheorem*{theorem}{\hspace{-0.16cm}\color{2a7ae2}\mybox[2a7ae2]{\color{2a7ae2}定理\addtocounter{A}{1} \thesection.\arabic{A}}}
+%\newtheorem*{defination}{\hspace{-0.16cm}\color{f8766d}\mybox[f8766d]{\color{f8766d}定义\addtocounter{B}{1} \thesection.\arabic{B}}}
+%\newtheorem*{feature}{\hspace{-0.16cm}\color{ffa725}\mybox[ffa725]{\color{ffa725}性质\addtocounter{C}{1} \thesection.\arabic{C}}}
+%\newtheorem*{inference}{\hspace{-0.16cm}\color{1a9850}\mybox[1a9850]{\color{1a9850}推论\addtocounter{D}{1} \thesection.\arabic{D}}}
+%\newtheorem*{method}{\hspace{-0.16cm}\color{6a3d9a}\mybox[6a3d9a]{\color{6a3d9a}方法\addtocounter{E}{1} \thesection.\arabic{E}}}
+%\newtheorem*{example}{\hspace{-0.16cm}\color{53a9ab}\mybox[53a9ab]{\color{53a9ab}例题\addtocounter{F}{1} \thesection.\arabic{F}}}
+
+\newcommand{\theorem}[1][]{\vspace{0.5em}\par\noindent\hspace{-8pt}\myboxp[2a7ae2]{\color{2a7ae2}{\CJKfamily{heiti}定理\ \con{A}\hspace{1em}{\CJKfamily{songbold}#1} } }\vspace{0.1em}\par }
+\newcommand{\definition}[1][]{\vspace{0.5em}\par\noindent\hspace{-8pt}\myboxp[53a9ab]{\color{53a9ab}{\CJKfamily{heiti}定义\ \con{B}\hspace{1em}{\CJKfamily{songbold}#1} } }\vspace{0.1em}\par }
+\newcommand{\feature}[1][]{\vspace{0.5em}\par\noindent\hspace{-8pt}\myboxp[ffa725]{\color{ffa725}{\CJKfamily{heiti}性质\ \con{C}\hspace{1em}{\CJKfamily{songbold}#1} } }\vspace{0.1em}\par }
+\newcommand{\inference}[1][]{\vspace{0.5em}\par\noindent\hspace{-8pt}\myboxp[1a9850]{\color{1a9850}{\CJKfamily{heiti}推论\ \con{D}\hspace{1em}{\CJKfamily{songbold}#1} } }\vspace{0.1em}\par }
+\newcommand{\method}[1][]{\vspace{0.5em}\par\noindent\hspace{-8pt}\myboxp[6a3d9a]{\color{6a3d9a}{\CJKfamily{heiti}方法\ \con{E}\hspace{1em}{\CJKfamily{songbold}#1} } }\vspace{0.1em}\par }
+\newcommand{\example}[1][]{\vspace{0.5em}\par\noindent\hspace{-8pt}\myboxp[f8766d]{\color{f8766d}{\CJKfamily{heiti}例题\ \con{F}\hspace{1em}{\CJKfamily{songbold}#1} } }\vspace{0.1em}\par }
+
+%符号设置-------------------------------
+{\color{titlepurple}}
+%标题配置—————————————
+\title{\vspace{5cm}
+	\begin{center}
+		\includegraphics[width=16cm]{covertitle.eps}
+		%\includegraphics[width=8cm]{cover2.png}
+		%\includegraphics[width=8cm]{cover3.png}
+		%\includegraphics[width=12cm]{cover4.png}
+	\end{center}
+\vspace{5cm}}
+\author{\large\color{titlepurple}关舒文\\{\color{titlepurple}\kaishu{华南理工大学}}}
+\date{\color{titlepurple}\small{Latest Update\ :\ \today}}
+
+%章节或标题的样式-------------------
+%\titleformat{\chapter}{\CJKfamily{title}\huge\color{titlepurple}}{\includegraphics[height=2cm]{sigmaformal.eps} 第\ \thechapter\ 章\ }{0pt}{}
+\titleformat{\section}{\CJKfamily{hei}\large\color{titlepurple}}{\bfseries{\thesection}\quad  }{0pt}{}
+\titleformat{\subsection}{\CJKfamily{hei}\large\color{titlepurpleb}}{\bfseries{\thesubsection}\quad  }{0pt}{}
+\titleformat{\subsubsection}{\CJKfamily{hei}\large\color{titlepurplec}}{\bfseries{\thesubsubsection}\quad  }{0pt}{}
+\renewcommand{\nomname}{符号说明}
+%自定义优化命令-----------------------
+\renewcommand{\a}{\ensuremath A}%
+\renewcommand{\b}{\ensuremath B}%
+\renewcommand{\c}{\ensuremath C}%
+\renewcommand{\o}{\ensuremath \varnothing}%
+\renewcommand{\textbf}[1]{{\CJKfamily{heiti}#1}}%
+\newcommand{\md}[1]{{\,\color{purple}#1\,}}%
+\newcommand{\cf}[1]{\textit{cf.Fig~\ref{#1}}}%
+\newcommand{\margin}[1]{{\marginpar{\footnotesize\kaishu\hspace*{2em}#1}}}
+%\renewcommand{\chapter}[1]{{\chapter{#1}\thispagestyle{empty}} }%
+%使用了自定义页眉页脚---------------
+\pagestyle{fancy}
+%\renewcommand{\chaptermark}[1]{\markboth{\;第\ \thechapter\ 章\quad#1\;}{}}
+\renewcommand{\sectionmark}[1]{\markright{\;\thesection\ #1\;}}
+\fancyhf{}
+%\fancyfoot[C]{\bfseries\thepage}
+\fancyhead[LO]{\small\CJKfamily{heilight}\rightmark}
+\fancyhead[RE]{\small\CJKfamily{heilight}\leftmark}
+\fancyhead[RO,LE]{\;\thepage\;}
+\fancyfoot[RO,LE]{\small\CJKfamily{heilight}{微积分  重要公式}}
+\fancyfoot[RE,LO]{\small\CJKfamily{heilight}The Important Equations of Calculus}
+\renewcommand{\headrulewidth}{0.4pt} % 注意不用\setlength
+%\renewcommand{\footrulewidth}{0pt}

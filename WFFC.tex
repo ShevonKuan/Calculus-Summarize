@@ -1,0 +1,263 @@
+%模板
+\documentclass[12pt,a4paper]{book}
+
+\usepackage{ctex}
+\usepackage{graphicx}%插入图片的宏包
+\usepackage{makeidx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}%数学符号宏包
+\usepackage{textcomp}%树叶图案在这个包里
+\usepackage{bbding}%很多漂亮的图案
+\usepackage[dvipsnames, svgnames, x11names]{xcolor}%导入了所有颜色配置文件的宏包
+\usepackage{enumerate}%使用改宏包优化罗列环境
+\usepackage{CJKfntef}
+\usepackage{ulem}%下划线宏包用法和样式如下：
+%\uuline{双下划线}
+%\uwave{波浪线}
+%\sout{中间删除线}
+%\xout{斜删除线}
+%\dashuline{虚线}
+%\dotuline{加点}
+\usepackage{geometry}%页边距调整
+\geometry{left=1.5cm,right=1.5cm,bottom=1.8cm,top=1.8cm}
+\usepackage{titletoc}%目录页的宏包
+\usepackage{titlesec}%改变章节或标题的样式的宏包
+\usepackage[bookmarks=true,colorlinks,linkcolor=black]{hyperref}
+
+%各类设置
+%章节或标题的样式
+\titleformat{\section}%设置section的样式
+{\raggedright\Large\bfseries}{\includegraphics[width=0.03\textwidth]{sigma.eps}\thesection\hspace*{0.6cm}}{0pt}{}
+\titlespacing*{\subsection}{3em}{3em}{2em}[1em]
+\titleformat{\subsection}%设置section的样式
+{\raggedright\large\bfseries}{\hspace*{1cm}\thesubsection\hspace*{0.6cm}}{0pt}{}
+\titlespacing*{\subsection}{3em}{2em}{2em}[1em]
+%格式如下：\titlespacing*{章节名称}{左间距}{(前)行间距}{(后)行间距}[右间距(一般都没用，填0.1em即可，但不能不填)]
+\titlespacing*{\subsubsection}{2em}{1em}{1em}[1em]
+
+%制作索引
+\makeindex
+
+%公式编号设置
+\numberwithin{equation}{section}
+
+%字体设置
+\setCJKmainfont[BoldFont=STZHONGS.ttf]{STZHONGS.ttf}%需要查看电脑字体查找对应字体的文件英文文件名
+\setCJKfamilyfont{song}{STZHONGS.ttf}
+\setCJKfamilyfont{kai}{simkai.ttf}%都是用来定义字体的(此处使用电脑自带楷书)
+
+%定义区域
+\definecolor{zs}{HTML}{2a7ae2}%定义某个颜色，对应颜色代号查表
+\definecolor{dy}{HTML}{FF359A}
+\definecolor{dl}{HTML}{4B0091}
+\definecolor{ff}{HTML}{007500}
+\definecolor{bt}{HTML}{5B00AE}
+
+		%定义环境
+\newtheorem{method}{\hspace*{0.3cm}\color{ff}\textleaf 方法}[section]
+\newtheorem{defination}{\hspace*{0.3cm}\color{dy}\FiveFlowerOpen \hspace*{0.2cm}定义}[section]
+\newtheorem{feature}{\color{1a9850}$ \square  $性质}[section]
+\newtheorem{inference}{\color{00ba38}$ \square  $推论}[section]
+\newtheorem{theorem}{\hspace*{0.3cm}\color{dl} $ \square  $定理}[section]
+\newtheorem{example}{\color{53a9ab}$ \square  $例}[section]
+\newtheorem{proof}{证明}[chapter]
+
+%文章标题
+		\title{微分方程总结}\author{易鹏}
+
+%调整间距（倍数）
+\linespread{1.5}
+
+%标题及目录
+\begin{document}
+\maketitle %显示标题
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{0}%强行设置起始页码
+\tableofcontents
+\thispagestyle{empty}
+
+
+%正文部分
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\chapter{微分方程}
+\section{微分方程的基本概念}
+\vspace*{0.3cm}
+
+\begin{defination}
+    \hspace*{0.3cm}一般地，凡表示未知函数、未知函数的导数与自变量之间的关系的方程，叫做\uuline{微分方程}\index{微分方程!微分方程}，有时也简称\uuline{方程}.
+\end{defination}
+
+\begin{defination}
+    \hspace*{0.3cm}微分方程中所出现的未知函数的最高阶导数的阶数，叫做\uuline{微分方程的阶}\index{微分方程!微分方程的阶}.例如三阶微分方程$x^3y'''+x^2y''-4xy'=3x^2+\sin{2x}$.一般地，$n$阶微分方程的形式是
+    \begin{equation}
+        F(x,y,y',\cdots ,y^{(n)})=0\label{n阶微分方程}
+    \end{equation}
+    其中$y^{(n)}$是必须有的，而其余项$x,y,y',\cdots ,y^{(n-1)}$可有可无.
+\end{defination}
+
+\begin{defination}
+    \hspace*{0.3cm}找出这样的函数，把这个函数代入微分方程\eqref{n阶微分方程}能使该方程成为恒等式.这个函数就叫做该\uuline{微分方程的解}\index{微分方程!微分方程的解}.设函数$y=\varphi(x)$在区间$I$上有$n$阶连续导数,如果在区间$I$上,
+    $$F\left[x,\varphi(x),\varphi'(x),\cdots ,\varphi^{(n)}(x)\right]\equiv 0$$
+    那么函数就叫做微分方程\eqref{n阶微分方程}在区间$I$上的解.
+\end{defination}
+
+\begin{defination}
+    \hspace*{0.3cm}如果微分方程的解中含有任意常数，且任意常数的个数与微分方程的阶数相同\footnote{这里所说的任意常数是相互独立的， 就是说，它们不能合并而使得任意常数的个数减少(参见本章第六节关于函数组的线性相关性)}，这样的解叫做\uuline{微分方程的通解}\index{微分方程!微分方程的通解}.
+\end{defination}
+
+\hspace*{0.6cm}通解中含有任意常数，所以它还不能完全确定地反映某一客观事物的规律性.所以为了完全确定地反映客观事物的规律性，必须确定这些常数的值.为此要根据问题的实际情况，提出确定这些常数的条件.例如设一阶微分方程中的未知函数为$y=\varphi (x)$，通常给出的条件为$x=x_0,y=y_0$，也记为${y|}_{x=x_0}=y_0$.
+
+\begin{defination}
+    \hspace*{0.3cm}上述给出的条件就称为\uuline{初值条件}\index{微分方程!初值条件}.确定了通解中的任意常数以后，得到的解就叫做\uuline{微分方程的特解}\index{微分方程!微分方程的特解}.求微分方程$y'=f(x ,y)$满足初值条件${y|}_{x=x_0}=y_0$的特解这样一个问题，叫做一阶微分方程的\uuline{初值问题}\index{微分方程!初值问题}，记作
+    \begin{equation}
+        \left\lbrace
+        \begin{array}{l}
+            y' = f(x,y) \\
+            y\left | {_{x = {x_0}} = {y_0}} \right.
+        \end{array}
+        \right.
+        \label{初值问题1}
+    \end{equation}
+\end{defination}
+
+\begin{defination}
+    微分方程的解的图形是一条曲线，叫做微分方程的\uuline{积分曲线}\index{微分方程!积分曲线}.初值问题\eqref{初值问题1}的几何意义，就是求微分方程\eqref{初值问题1}的通过点$(x_0,y_0)$的那条积分曲线，二阶微分方程的初值问题
+    \begin{equation}
+        \left\lbrace
+        \begin{array}{l}
+            y''= f(x,y,y')                          \\
+            y\left | {_{x = {x_0}} = {y_0}} \right. \\
+            y'\left | {_{x = {x_0}} = {y_0'}} \right.
+        \end{array}
+        \right.
+        \label{初值问题2}
+    \end{equation}
+    的几何意义是求微分方程\eqref{初值问题2}的通过点$(x_0,y_0)$的且在该点处的切线斜率为$y_0'$的那条积分曲线.
+\end{defination}
+
+\section{各种微分方程的求解}
+\subsection{可分离变量的微分方程}
+
+\begin{defination}
+    \hspace*{0.3cm}一般地，如果一个微分方程能写成
+    \begin{equation}
+        g(y)\,\mathrm{d}y=f(x)\,\mathrm{d}x
+        \label{可分离变量的微分方程}
+    \end{equation}
+    的形式，就是说，能把微分方程写成一端只含$y$的函数和$\mathrm{d}y$，另一端写成只含$x$的函数和$\mathrm{d}x$的形式，那么原方程就称为\uuline{可分离变量的微分方程}\index{微分方程!可分离变量的微分方程}.
+\end{defination}
+
+\begin{method}
+    \hspace*{0.3cm}方程\eqref{可分离变量的微分方程}的解法，只需要两边同时积分即可，即
+    \begin{equation}
+        \int g(y)\,\mathrm{d}y=\int f(x)\,\mathrm{d}x
+        \label{可分离变量的微分方程2}
+    \end{equation}
+    设$G(y)$和$F(x)$分别为$g(y)$和$f(x)$的原函数，那么
+    \begin{equation}
+        G(y)=F(x)+C
+        \label{可分离变量的微分方程3}
+    \end{equation}
+\end{method}
+
+\begin{defination}
+    \hspace*{0.3cm}如果方程\eqref{可分离变量的微分方程3}表示的是隐函数$y=\varphi (x)$，那么式\eqref{可分离变量的微分方程3}是微分方程\eqref{可分离变量的微分方程}的\uuline{隐式解}\index{微分方程!隐式解}.又由于关系式\eqref{可分离变量的微分方程3}中含有任意常数，因此式\eqref{可分离变量的微分方程3}微分方程\eqref{可分离变量的微分方程}的通解，也叫做\uuline{隐式通解}\index{微分方程!隐式通解}.
+\end{defination}
+\vspace{0.3cm}
+
+\subsection{齐次方程}
+
+\begin{defination}
+    \hspace*{0.3cm}如果一阶微分方程可以化成
+
+    \begin{equation}
+        \frac{\mathrm{d}y}{\mathrm{d}x}=\varphi (\frac{y}{x})
+        \label{齐次方程1}
+    \end{equation}
+
+    的形式，那么这个微分方程就叫做\uuline{齐次方程}\index{微分方程!齐次方程}.
+\end{defination}
+
+\begin{method}
+    \hspace*{0.3cm}求解齐次微分方程\eqref{齐次方程1}的方法如下：\\
+    第一步：换元
+    $$u=\frac{y}{x}$$
+    其中$u$是关于$x$的一个新函数，所以
+    $$y=ux,\frac{\mathrm{d}y}{\mathrm{d}x}=u+\frac{\mathrm{d}u}{\mathrm{d}x}x$$
+    第二步：代入式\eqref{齐次方程1}，得
+    $$u+\frac{\mathrm{d}u}{\mathrm{d}x}x=\varphi (u)$$
+    第三步：分离变量,得到
+    $$\frac{1}{\varphi (u)-u}\,\mathrm{d}u=\frac{1}{x}\,\mathrm{d}x$$
+    第四步：两边同时积分,得到
+    $$\int \frac{1}{\varphi (u)-u}\,\mathrm{d}u=\ln|x|\,$$
+    即
+    $$x=\mathrm{e}^{\int \frac{1}{\varphi (u)-u}\,\mathrm{d}u}$$
+\end{method}
+
+\begin{theorem}
+    \hspace{0.3cm}齐次方程\eqref{齐次方程1}的通解为
+    \begin{equation}
+        x=\mathrm{e}^{\int \frac{1}{\varphi (u)-u}\,\mathrm{d}u}
+        \label{齐次方程的通解}
+    \end{equation}
+
+\end{theorem}
+
+
+\subsection{可化为齐次的方程}
+\begin{method}
+    \hspace{0.3cm}方程
+    \begin{equation}
+        \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_1x+b_1y+c_1}{a_2x+b_2y+c_2}
+        \label{非齐次方程}
+    \end{equation}
+    当$c_1=c_2=0$时方程\eqref{非齐次方程}是齐次的，否则不是齐次的.在非齐次的情形，可以用变换法和待定系数法使得其变为齐次方程.令
+    $$x=X+h,y=Y+k,$$
+    于是，
+    $$\mathrm{d}x=\mathrm{d}X,\mathrm{d}y=\mathrm{d}Y,$$
+    带入方程\eqref{非齐次方程}得到
+    $$\frac{\mathrm{d}Y}{\mathrm{d}X}=\frac{a_1X+b_1Y+a_1h+b_1k+c_1}{a_2X+b_2Y+a_2h+b_2k+c_2}.$$
+    那么要使方程\eqref{非齐次方程}是齐次方程，那么需要满足方程组
+    $$\left\lbrace
+        \begin{array}{l}
+            a_1h+b_1k+c_1=0 \\
+            a_2h+b_2k+c_2=0
+        \end{array}
+        \right.$$
+    如果上述方程组的系数行列式
+    $\left| \begin{array}{cc}
+            a_1 & b_1 \\
+            a_2 & b_2
+        \end{array}  \right| \ne 0$
+    ，即$\displaystyle\frac{a_2}{a_1}\ne \frac{b_1}{b_2} $，那么这个方程组存在唯一的$h$和$k$使得上述方程组成立.那么，方程\eqref{非齐次方程}便化为齐次方程
+    $$\frac{\mathrm{d}Y}{\mathrm{d}X}=\frac{a_1X+b_1Y}{a_2X+b_2Y}.$$
+    求出这个齐次方程的解以后在通解中要记得将元换回来，即代入$X=x-h,Y=y-k$.\vspace*{0.2cm}\\
+
+    \hspace*{0.5cm}特别地，当$\displaystyle\frac{a_2}{a_1}= \frac{b_1}{b_2}$时，无法求出$h$和$k$.这时令$\displaystyle\frac{a_2}{a_1}= \frac{b_1}{b_2}=\lambda $，那么方程\eqref{非齐次方程}可以写为
+    $$\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_1x+b_1y+c_1}{\lambda (a_1x+b_1y)+c_2}$$
+    引入新变量$v=a_1x+b_1y$，那么
+    $$\frac{\mathrm{d}v}{\mathrm{d}x}=a_1+b_1 \, \frac{\mathrm{d}y}{\mathrm{d}x} \qquad \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{b_1}\left(\frac{\mathrm{d}v}{\mathrm{d}x}-a_1 \right) $$
+    代入方程\eqref{非齐次方程}得到
+    $$\frac{1}{b_1}\left(\frac{\mathrm{d}v}{\mathrm{d}x}-a_1 \right)=\frac{v+c_1}{\lambda v+c_2}$$
+    这就变成了一个可以分离变量的方程，很容易就可以求解.
+\end{method}
+
+\subsection{一阶线性微分方程}
+
+
+
+
+%打印索引—————————————
+\newpage
+\addcontentsline{toc}{chapter}{附录}
+\addcontentsline{toc}{section}{索引}
+\appendix
+\kaishu
+\printindex
+%———————————————
+
+\end{document}
